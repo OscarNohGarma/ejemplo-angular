@@ -1,0 +1,21 @@
+<div class="max-w-lg mx-auto p-4">
+    <h2 class="text-2xl font-bold mb-4">Lista de Tareas</h2>
+
+    <div class="flex gap-2 mb-4">
+        <input [(ngModel)]="newTodoTitle" placeholder="Nueva tarea"
+            class="border border-gray-300 p-2 flex-grow rounded" />
+        <a (click)="addTodo()"
+            class="boton bg-purple-600 text-white py-2 px-4 rounded hover:bg-purple-700 transition-colors cursor-pointer">Agregar</a>
+    </div>
+
+    <ul>
+        <li *ngFor="let todo of todos" class="flex items-center mb-2">
+            <input type="checkbox" [checked]="todo.completed" (change)="toggleTodo(todo.id)" class="mr-2" />
+            <p class="flex-grow" [ngClass]="{'line-through text-gray-500': todo.completed}">
+                {{ todo.title }}
+            </p>
+            <a (click)="deleteTodo(todo.id)"
+                class="boton bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition-colors cursor-pointer">Eliminar</a>
+        </li>
+    </ul>
+</div>
